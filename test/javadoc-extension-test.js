@@ -97,5 +97,17 @@ describe('javadoc-extension', () => {
         '<code><a href="attachment$api/java/com/example/MyClass.html" class="apiref">`MyClass`</a></code>'
       )
     })
+
+    it('should convert using dunno', () => {
+      const input = heredoc`
+        = Page Title
+        :javadoc-location: xref:api:java
+
+        javadoc:com.example.MyClass[]
+        `
+      const actual = run(input, { convert: true })
+      console.log(actual)
+      expect(actual).to.include('<code><a href="api:java/com/example/MyClass.html" class="apiref">`MyClass`</a></code>')
+    })
   })
 })
