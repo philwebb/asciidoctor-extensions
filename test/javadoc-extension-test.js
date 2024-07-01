@@ -48,7 +48,7 @@ describe('javadoc-extension', () => {
     return log(Asciidoctor.load(input, opts))
   }
 
-  function log(data) {
+  function log (data) {
     console.log(data)
     return data
   }
@@ -100,7 +100,7 @@ describe('javadoc-extension', () => {
       expect(actual).to.include(
         '<code class="apiref-hint:com.example.MyClass"><a href="attachment$api/java/com/example/MyClass.html" class="apiref">MyClass</a></code>'
       )
-    }) 
+    })
 
     it('should convert with specified location when has javadoc-location attribute', () => {
       const input = heredoc`
@@ -176,17 +176,16 @@ describe('javadoc-extension', () => {
       )
     })
 
-
     it('should convert with specified text when has link text', () => {
       const input = heredoc`
       = Page Title
 
       javadoc:com.example.MyClass[My class]
       `
-    const actual = run(input, { convert: true })
-    expect(actual).to.include(
-      '<code class="apiref-hint:com.example.MyClass"><a href="attachment$api/java/com/example/MyClass.html" class="apiref">My class</a></code>'
-    )
+      const actual = run(input, { convert: true })
+      expect(actual).to.include(
+        '<code class="apiref-hint:com.example.MyClass"><a href="attachment$api/java/com/example/MyClass.html" class="apiref">My class</a></code>'
+      )
     })
 
     it('should convert with method reference', () => {
@@ -195,12 +194,11 @@ describe('javadoc-extension', () => {
 
       javadoc:com.example.MyClass#run(java.lang.Class,java.lang.String...)[]
       `
-    const actual = run(input, { convert: true })
-    expect(actual).to.include(
-      '<code class="apiref-hint:com.example.MyClass.run(java.lang.Class,+java.lang.String...)"><a href="attachment$api/java/com/example/MyClass.html#run(java.lang.Class,java.lang.String...)" class="apiref">MyClass.run(Class, String&#8230;&#8203;)</a></code>'
-     )
+      const actual = run(input, { convert: true })
+      expect(actual).to.include(
+        '<code class="apiref-hint:com.example.MyClass.run(java.lang.Class,+java.lang.String...)"><a href="attachment$api/java/com/example/MyClass.html#run(java.lang.Class,java.lang.String...)" class="apiref">MyClass.run(Class, String&#8230;&#8203;)</a></code>'
+      )
     })
-
 
     it('should convert with const reference', () => {
       const input = heredoc`
@@ -208,12 +206,11 @@ describe('javadoc-extension', () => {
 
       javadoc:com.example.MyClass#MY_CONST[]
       `
-    const actual = run(input, { convert: true })
-    expect(actual).to.include(
-      '<code class="apiref-hint:com.example.MyClass.MY_CONST"><a href="attachment$api/java/com/example/MyClass.html#MY_CONST" class="apiref">MyClass.MY_CONST</a></code>'
-     )
+      const actual = run(input, { convert: true })
+      expect(actual).to.include(
+        '<code class="apiref-hint:com.example.MyClass.MY_CONST"><a href="attachment$api/java/com/example/MyClass.html#MY_CONST" class="apiref">MyClass.MY_CONST</a></code>'
+      )
     })
-
 
     it('should convert with annotation reference', () => {
       const input = heredoc`
@@ -221,11 +218,10 @@ describe('javadoc-extension', () => {
 
       javadoc:com.example.MyAnnotation#format()[format=annotation]
       `
-    const actual = run(input, { convert: true })
-    expect(actual).to.include(
-      '<code class="apiref-hint:com.example.MyAnnotation.format"><a href="attachment$api/java/com/example/MyAnnotation.html#format()" class="apiref">@MyAnnotation.format</a></code>'
-     )
+      const actual = run(input, { convert: true })
+      expect(actual).to.include(
+        '<code class="apiref-hint:com.example.MyAnnotation.format"><a href="attachment$api/java/com/example/MyAnnotation.html#format()" class="apiref">@MyAnnotation.format</a></code>'
+      )
     })
-
   })
 })
