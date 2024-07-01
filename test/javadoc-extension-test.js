@@ -98,7 +98,7 @@ describe('javadoc-extension', () => {
       )
     })
 
-    it('should convert using dunno', () => {
+    it('should convert with specified location when has javadoc-location attribute', () => {
       const input = heredoc`
         = Page Title
         :javadoc-location: xref:api:java
@@ -111,5 +111,29 @@ describe('javadoc-extension', () => {
         '<code class="api-target:com.example.MyClass"><a href="api:java/com/example/MyClass.html" class="apiref">`MyClass`</a></code>'
       )
     })
+
+    it('should convert with specified location when has location in macro', () => {
+    })
+
+    it('should convert with specified format when has format full', () => {
+
+    })
+
+    it('should convert with specified format when has format annotation', () => {
+
+    })
+
+    it('should convert with specified format when has format short', () => {
+
+    })
+
+    it('should convert with specified text when has link text', () => {
+
+    })
+
+    it('should convert with method reference', () => {
+
+    })
+
   })
 })
