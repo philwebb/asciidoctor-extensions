@@ -223,7 +223,7 @@ describe('javadoc-extension', () => {
       `
     const actual = run(input, { convert: true })
     expect(actual).to.include(
-      '<code class="apiref-hint:com.example.MyAnnotation.format"><a href="attachment$api/java/com/example/MyAnnotation.html#format()" class="apiref">MyAnnotation.format</a></code>'
+      '<code class="apiref-hint:com.example.MyAnnotation.format"><a href="attachment$api/java/com/example/MyAnnotation.html#format()" class="apiref">@MyAnnotation.format</a></code>'
      )
     })
 
