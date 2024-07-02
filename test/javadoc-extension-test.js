@@ -139,7 +139,6 @@ describe('javadoc-extension', () => {
       )
     })
 
-
     it('should convert with specified format when has format full', () => {
       const input = heredoc`
         = Page Title
