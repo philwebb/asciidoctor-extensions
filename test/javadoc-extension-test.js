@@ -197,7 +197,7 @@ describe('javadoc-extension', () => {
       `
       const actual = run(input, { convert: true })
       expect(actual).to.include(
-        '<code class="apiref-hint:com.example.MyClass"><a href="attachment$api/java/com/example/MyClass.html" class="apiref">My class</a></code>'
+        '<code class="apiref-hint:com.example.MyClass.Builder"><a href="attachment$api/java/com/example/MyClass.Builder.html" class="apiref">Builder</a></code>'
       )
     })
 
@@ -209,7 +209,7 @@ describe('javadoc-extension', () => {
       `
       const actual = run(input, { convert: true })
       expect(actual).to.include(
-        '<code class="apiref-hint:com.example.MyClass"><a href="attachment$api/java/com/example/MyClass.html" class="apiref">My class</a></code>'
+        '<code class="apiref-hint:com.example.MyClass.Builder"><a href="attachment$api/java/com/example/MyClass.Builder.html" class="apiref">MyClass.Builder</a></code>'
       )
     })
 
