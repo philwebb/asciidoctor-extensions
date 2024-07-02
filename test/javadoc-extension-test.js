@@ -115,17 +115,30 @@ describe('javadoc-extension', () => {
       )
     })
 
-    it('should convert with specified location when has location in macro', () => {
+    it('should convert with specified location when has xref location in macro', () => {
       const input = heredoc`
         = Page Title
 
-        javadoc:com.example.MyClass[]
+        javadoc:xref:api:java/com.example.MyClass[]
         `
       const actual = run(input, { convert: true })
       expect(actual).to.include(
-        '<code class="apiref-hint:com.example.MyClass"><a href="attachment$api/java/com/example/MyClass.html" class="apiref">MyClass</a></code>'
+        '<code class="apiref-hint:com.example.MyClass"><a href="api:java/com/example/MyClass.html" class="apiref">MyClass</a></code>'
       )
     })
+
+    it('should convert with specified location when has http location in macro', () => {
+      const input = heredoc`
+        = Page Title
+
+        javadoc:https://javadoc.example.com/latest/com.example.MyClass[]
+        `
+      const actual = run(input, { convert: true })
+      expect(actual).to.include(
+        '<code class="apiref-hint:com.example.MyClass"><a href="https://javadoc.example.com/latest/com/example/MyClass.html" class="apiref">MyClass</a></code>'
+      )
+    })
+
 
     it('should convert with specified format when has format full', () => {
       const input = heredoc`
@@ -180,7 +193,19 @@ describe('javadoc-extension', () => {
       const input = heredoc`
       = Page Title
 
-      javadoc:com.example.MyClass[My class]
+      javadoc:com.example.MyClass$Builder[Builder]
+      `
+      const actual = run(input, { convert: true })
+      expect(actual).to.include(
+        '<code class="apiref-hint:com.example.MyClass"><a href="attachment$api/java/com/example/MyClass.html" class="apiref">My class</a></code>'
+      )
+    })
+
+    it('should convert with specified text when has inner class', () => {
+      const input = heredoc`
+      = Page Title
+
+      javadoc:com.example.MyClass$Builder[]
       `
       const actual = run(input, { convert: true })
       expect(actual).to.include(
